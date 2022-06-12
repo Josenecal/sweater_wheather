@@ -31,7 +31,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # HTTP request handler
 gem 'faraday'
 
+# add to your Gemfile
 group :test do
+    gem 'webmock'
+    gem 'vcr'
 end
 
 group :development, :test do
