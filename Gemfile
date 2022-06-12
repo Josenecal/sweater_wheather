@@ -34,7 +34,6 @@ gem 'faraday'
 # add to your Gemfile
 group :test do
     gem 'webmock'
-    gem 'vcr'
 end
 
 group :development, :test do
