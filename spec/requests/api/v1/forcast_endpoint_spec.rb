@@ -2,15 +2,25 @@ require 'rails_helper'
 
 RSpec.describe "Retrieve weather for a city endpoint: " do
 
+  it "is currently responsive" do
+    get "/api/v1/forecast?location=denver,co"
+    expect(response.status.to_s).to match /2\d\d/
+  end
+
   context "Requires the correct headers" do
 
     it "requires request header to contain Content-Type: application/json", :vcr do
-      get "/api/v1/forecast?location=denver,co"
-      expect(response).to be successful
+      get "/api/v1/forecast", params: {location: "denver,co" }, headers: { "Accept" => "application/json" }
+      expect(response.status.to_s).to match /4\d\d/
+      get "/api/v1/forecast", params: {location: "denver,co" }, headers: { "Content-Type" => "application/json"}
+      expect(response.status.to_s).to match /4\d\d/
+      get "/api/v1/forecast", params: {location: "denver,co" }
+      expect(response.status.to_s).to match /4\d\d/
     end
 
-    it "requires request header to contain Accept: application/json", :vcr do
-
+    it "requires a city and state parameter", :vcr do
+      get "/api/v1/forecast", headers: { "Content-Type" => "application/json"}
+      expect(response.status.to_s).to match /4\d\d/
     end
 
   end
