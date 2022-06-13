@@ -13,7 +13,8 @@ RSpec.describe 'background endpoint' do
     to_return(status: 200, body: mocked_response, headers: {})
 
     get "/api/v1/backgrounds?location=Denver,CO"
-  binding.pry
+
+    # Thank God It Passes add assertions here
   end
 
 end
