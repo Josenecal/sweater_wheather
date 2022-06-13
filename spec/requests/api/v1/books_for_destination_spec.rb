@@ -4,7 +4,14 @@ RSpec.describe 'response profiles for books-search endpoint' do
 
   it "responds with the expected profile for a good request" do
     mocked_books_response = File.read("spec/fixtures/open_library_response_denver_co.json")
-    # stub open library request/response
+    stub_request(:get, "https://openlibrary.org/search.json?limit=5&q=denver%2Bco").
+         with(
+           headers: {
+          'Accept'=>'*/*',
+          'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent'=>'Faraday v2.3.0'
+           }).
+         to_return(status: 200, body: mocked_books_response, headers: {})
 
     mocked_mapquest_response = File.read('spec/fixtures/geocode_address_denver.json')
     stub_request(:get, "http://www.mapquestapi.com/geocoding/v1/address?key=#{ENV['mapquest_api_key']}&location=denver,co").
