@@ -66,10 +66,10 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # Configures VCR to automatically maintain casettes:
-  # users format ` it 'test description', :vcr do `
-  VCR.configure do |c|
-    c.configure_rspec_metadata!
-  end
+  # # Configures VCR to automatically maintain casettes:
+  # # users format ` it 'test description', :vcr do `
+  # VCR.configure do |c|
+  #   c.configure_rspec_metadata!
+  # end
 
 end
