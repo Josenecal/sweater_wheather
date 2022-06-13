@@ -12,6 +12,7 @@ class Api::V1::BackgroundSerializer
         "credit": {
           "source": "unsplash.com",
           "author": background_obj.author_name,
+          "author_link": background_obj.author_link,
           "logo": "https://pixabay.com/static/img/logo_square.png"
         }
       }

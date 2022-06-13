@@ -49,12 +49,14 @@ RSpec.describe 'background endpoint' do
     expect(response_body[:data][:attributes][:image][:location]).to match /\A[a-zA-Z]+,[a-zA-Z][a-zA-Z]\Z/
     expect(response_body[:data][:attributes][:image][:image_url]).to match /\Ahttps:\/\/images.unsplash.com\/photo-/
     expect(response_body[:data][:attributes][:image][:credit].class).to be Hash
-    expect(response_body[:data][:attributes][:image][:credit].keys).to eq [:source, :author, :logo]
-    expect(response_body[:data][:attributes][:image][:credit].keys.length).to eq 3
+    expect(response_body[:data][:attributes][:image][:credit].keys).to eq [:source, :author, :author_link, :logo]
+    expect(response_body[:data][:attributes][:image][:credit].keys.length).to eq 4
     expect(response_body[:data][:attributes][:image][:credit][:source]).to eq "unsplash.com"
     expect(response_body[:data][:attributes][:image][:credit][:author].class).to eq Array
     expect(response_body[:data][:attributes][:image][:credit][:author].first.class).to be String
     expect(response_body[:data][:attributes][:image][:credit][:author].last.class).to be String
+    expect(response_body[:data][:attributes][:image][:credit][:author_link].class).to eq String
+    expect(response_body[:data][:attributes][:image][:credit][:author_link]).to match /\Ahttps:\/\/api.unsplash.com\/users\//
     expect(response_body[:data][:attributes][:image][:credit][:logo]).to eq "https://pixabay.com/static/img/logo_square.png"
   end
 
