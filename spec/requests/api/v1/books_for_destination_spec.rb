@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe 'response profiles for books-search endpoint' do
 
   it "responds with the expected profile for a good request" do
+
+    # Setup external api mocks and stubs
     mocked_books_response = File.read("spec/fixtures/open_library_response_denver_co.json")
     stub_request(:get, "https://openlibrary.org/search.json?limit=5&q=denver%2Bco").
          with(
@@ -31,12 +33,28 @@ RSpec.describe 'response profiles for books-search endpoint' do
       'User-Agent'=>'Faraday v2.3.0'
        }).
      to_return(status: 200, body: mocked_openweather_response, headers: {})
-    get '/api/v1/book-search?location=denver,co&quantity=5'
-    response_body = JSON.parse(response.body)
 
+    # Visit our own endpoint
+    get '/api/v1/book-search?location=denver,co&quantity=5'
+    response_body = JSON.parse(response.body, symbolize_names: true)
+
+    # Response exists
     expect(response.status).to eq 200
     expect(response_body.class).to eq Hash
-    # assert has correct attributes
+
+    # Response Shape
+    expect(response_body.keys.length).to eq 1
+    expect(response_body[:data][:id]).to eq "null"
+    expect(response_body[:data][:type]).to eq "books"
+    expect(response_body[:data][:attributes].class).to eq Hash
+      expect(response_body[:data][:attributes][:destination]).to eq "denver,co"
+      expect(response_body[:data][:attributes][:forecast].class).to eq Hash
+        expect(response_body[:data][:attributes][:forecast][:summary].class).to eq String
+        expect(response_body[:data][:attributes][:forecast][:temperature]).to match /\A\d+ F\Z/
+
+
+
+
   end
 
 end

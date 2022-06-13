@@ -34,6 +34,7 @@ class Forecast
 
   def format_current_weather(current_forecast)
     {
+
       datetime: format_date_time(current_forecast[:dt], "date_time"),
       sunrise: format_date_time(current_forecast[:sunrise], "date_time"),
       sunset: format_date_time(current_forecast[:sunset], "date_time"),
@@ -42,13 +43,13 @@ class Forecast
       humidity: current_forecast[:humidity],
       uvi: current_forecast[:uvi],
       visibility: current_forecast[:visibility],
-      conditions: current_forecast[:weather].first[:descripion],
+      conditions: current_forecast[:weather].first[:description],
       icon: current_forecast[:weather].first[:icon]
     }
   end
 
   def convert_kelvin(temp)
-    "#{1.8*(temp-273.15)+32} F"
+    "#{(1.8*(temp-273.15)+32).to_i} F"
   end
 
   def format_date_time (utc_time, output)
