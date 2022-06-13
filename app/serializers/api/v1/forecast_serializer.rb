@@ -1,4 +1,4 @@
-class ForecastSerializer
+class Api::V1::ForecastSerializer
 
   def self.response(forecast)
     {

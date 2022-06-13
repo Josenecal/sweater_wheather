@@ -1,6 +1,6 @@
 class BackgroundsFacade
 
-  def get_backgrounds(location)
+  def self.get_backgrounds(location)
     json_response = UnsplashService.search_photos(location)
     Background.new(json_response[:results].first)
   end
