@@ -51,6 +51,17 @@ RSpec.describe 'response profiles for books-search endpoint' do
       expect(response_body[:data][:attributes][:forecast].class).to eq Hash
         expect(response_body[:data][:attributes][:forecast][:summary].class).to eq String
         expect(response_body[:data][:attributes][:forecast][:temperature]).to match /\A\d+ F\Z/
+      expect(response_body[:data][:attributes][:total_books_found].class).to be Integer
+      expect(response_body[:data][:attributes][:books].class).to be Array
+      response_body[:data][:attributes][:books].each do |book_hash|
+        expect(book_hash.class).to eq Hash
+        expect(book_hash[:isbn].class).to eq Array
+          expect(book_hash[:isbn].first.class).to eq String
+          expect(book_hash[:isbn].last.class).to eq String
+          # expect(book_hash[:isbn].length).to eq 2 - NOT ALWAYS TRUE!
+        expect(book_hash[:publisher].class).to eq Array
+        expect(book_hash[:title].class).to eq String
+      end
 
 
 

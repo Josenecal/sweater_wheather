@@ -3,9 +3,9 @@ class Book
   attr_reader :isbn, :title, :publisher
 
   def initialize(book_hash)
-    @isbn = book_hash[:isbn]
+    book_hash[:isbn] ? @isbn = book_hash[:isbn] : @isbn = ["0","0"]
     @title = book_hash[:title]
-    @publisher = book_hash[:publisher]
+    book_hash[:publisher] ? @publisher = book_hash[:publisher] : @publisher = ["none"]
   end
 
 end
