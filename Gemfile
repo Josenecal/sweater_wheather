@@ -38,10 +38,16 @@ end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # Call 'binding.pry' to pause execution and have access to code state in a developer console
   gem 'pry'
+  # RSpec Testing Suite
   gem 'rspec-rails'
+  # Environmental variable haler for local testing and development
   gem 'figaro'
+  # Test coverage monitering
+  gem 'simplecov'
   # gem 'capybara'
 
 end

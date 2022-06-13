@@ -25,5 +25,5 @@
 # Ignore application configuration
 /config/application.yml
 
-# Ignore coverage directory
+# Ignore simplecov feedback
 /coverage/
