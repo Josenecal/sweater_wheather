@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   get 'api/v1/forecast', to: 'api/v1/forecasts#show'
   get 'api/v1/backgrounds', to: 'api/v1/backgrounds#show'
 
+  get 'api/v1/book-search', to: 'api/v1/book_search#index'
+
 end
