@@ -13,8 +13,10 @@ RSpec.describe 'background endpoint' do
     to_return(status: 200, body: mocked_response, headers: {})
 
     get "/api/v1/backgrounds?location=Denver,CO"
+    response_body = JSON.parse(response.body, symbolize_names: true)
 
-    # Thank God It Passes add assertions here
+    expect(response_body.class).to eq Hash
+    expect(response_body.keys.
   end
 
 end
