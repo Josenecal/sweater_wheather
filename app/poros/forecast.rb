@@ -48,7 +48,7 @@ class Forecast
   end
 
   def convert_kelvin(temp)
-    1.8*(temp-273.15)+32
+    "#{1.8*(temp-273.15)+32} F"
   end
 
   def format_date_time (utc_time, output)
