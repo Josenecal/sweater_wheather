@@ -1,6 +1,6 @@
-class BackgroundSerializer
+class Api::V1::BackgroundSerializer
 
-  def background_response (background_obj, location)
+  def self.background_response (background_obj, location)
     {
   "data": {
     "type": "image",
