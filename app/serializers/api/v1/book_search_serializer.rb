@@ -1,4 +1,4 @@
-class BookSearchSerializer
+class Api::V1::BookSearchSerializer
 
   def self.response(location, forecast, books_array)
     {
