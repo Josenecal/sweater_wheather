@@ -1,7 +1,8 @@
-class Api::V1::BackgroundsController << ApplicationController
+class Api::V1::BackgroundsController < ApplicationController
 
   def show
-    BackgroundsFacade.get_backgrounds(location)
+    background = BackgroundsFacade.get_backgrounds(params[:location])
+    render json: BackgroundSerializer.background_response(background, params[:location])
   end
 
 end
