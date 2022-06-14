@@ -16,7 +16,7 @@ class Api::V1::UsersController < ApplicationController
 
   def user_creation_params
     json = JSON.parse(request.body.read)
-    { email: json['email'], password: json['password'], password_confirmation: json[:password_confirmation]}
+    { email: json['email'], password: json['password'], password_confirmation: json[:password_confirmation], api_key: SecureRandom.hex}
   end
 
 end
