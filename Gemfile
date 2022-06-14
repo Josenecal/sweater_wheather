@@ -48,7 +48,8 @@ group :development, :test do
   gem 'figaro'
   # Test coverage monitering
   gem 'simplecov'
-  # gem 'capybara'
+
+  gem 'shoulda-matchers'
 
 end
 
