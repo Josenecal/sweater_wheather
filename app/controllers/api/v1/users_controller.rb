@@ -27,7 +27,7 @@ class Api::V1::UsersController < ApplicationController
     else
       user = User.find_by(email: user_validation_params[:email])
       if user.authenticate(params[:password])
-        render json: NewUserSerializer.success(user), status: 200
+        render json: Api::V1::NewUserSerializer.success(user), status: 200
       else
         render json: { "error": "validation failed" }, status: 400
       end
@@ -51,7 +51,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def validated_email
-    email = JSON.parse(request.body.read, symbolize_names: true)[:email]
+    request.body.read.empty? ? email = nil : email = JSON.parse(request.body.read, symbolize_names: true)[:email]
     if email =~ /\A[\w\~\.\-\_]+\@[\w\~\.\-\_]+[\.[a-z]+]{1,2}\Z/
       return email.downcase
     else
