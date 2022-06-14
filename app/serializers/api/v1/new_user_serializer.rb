@@ -1,6 +1,6 @@
 class Api::V1::NewUserSerializer
 
-  def success(user)
+  def self.success(user)
     {
       "data": {
         "type": "users",
