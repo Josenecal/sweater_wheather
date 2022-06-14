@@ -48,8 +48,12 @@ group :development, :test do
   gem 'figaro'
   # Test coverage monitering
   gem 'simplecov'
-
+  # Provide model validation test methods
   gem 'shoulda-matchers'
+  # Provides automated ActiveRecord model creation
+  gem 'factory_bot_rails'
+  # Provides fake libraries for factory_bot
+  gem 'faker'
 
 end
 
