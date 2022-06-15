@@ -11,6 +11,7 @@ class RoadTripFacade
   end
 
   def get_travel_time(trip)
+    # returns seconds as an integer, or "impossible" if route is impossible
     if trip[:route][:time].class = integer
       return trip[:route][:time]
     else
@@ -19,13 +20,17 @@ class RoadTripFacade
   end
 
   def find_weather_at_eta(forecast, duration)
+    # if duration is impossible, returns an empty hash per spec
+    # if duration is less than 48 hours, uses hourly orecast
+    # elsif duration is less than 7 days, uses daily forecast
+    # elsif somehow duration is more than 7 days... uses last dayof forecast.
     if duration == "impossible"
       return Hash.new
     elsif duration <= 172800
-      index = duration/3600
+      index = duration/3600 - 1
       return forecast[:hourly][index]
     elsif duration <= 604800
-      index = duration/86400
+      index = duration/86400 - 1
       return forecast[:daily][index]
     else
       return forecast[:daily].last
