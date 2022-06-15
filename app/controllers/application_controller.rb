@@ -8,10 +8,9 @@ class ApplicationController < ActionController::API
 
   def check_body
     request_body = JSON.parse(request.body.read, symbolize_names: true)
-    unless User.exists? api_key: request_body[:api_key]
+    if !User.exists? api_key: request_body[:api_key]
       render json: { "error": "unauthorized" }, status: 401
-    end
-    if request_body[:origin] == nil || request_body[:destination] == nil
+    elsif request_body[:origin] == nil || request_body[:destination] == nil
       render json: { "error": "origin or destination left empty" }, status: 400
     elsif request_body[:origin].empty? || request_body[:destination].empty?
       render json: { "error": "origin or destination keys missing from request body" }, status: 400
