@@ -13,8 +13,8 @@ class RoadTrip
     if @travel_time == "impossible"
      return "impossible"
    else
-     hours = @travel_time / 3600
-     minutes = (@travel_time % 3600) / 60
+     hours = @travel_time.to_i / 3600
+     minutes = (@travel_time.to_i % 3600) / 60
      return "#{hours} hours, #{minutes} minutes"
    end
  end
