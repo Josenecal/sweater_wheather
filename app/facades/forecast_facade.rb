@@ -1,9 +1,13 @@
 class ForecastFacade
 
   def self.get_forecast_from_location(location)
+    forecast = get_forecast_json_from_location(location)
+    response = Forecast.new(forecast)
+  end
+
+  def self.get_forecast_json_from_location(location)
     lat_lng_hash = location_to_coordinate(location)
     forecast = get_forecast_from_coordinate_hash(lat_lng_hash)
-    response = Forecast.new(forecast)
   end
 
   def self.get_forecast_from_coordinate_hash(input_hash)
