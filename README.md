@@ -244,7 +244,7 @@ Example request
 The Roadtrip endpoint takes the extra validation step of verifying the request body has a valid API key that is registerd to the database. If so, this endpoint synthesizes data from a second mapquest api endpiont to generated an expected forecast in a destination city based on expected travel time, with some checks for impossible road trips. With this endpoint, all pareters msut come in as keys in a JSON body, not in query parameters in the URL, and as with all endpoints headers `Content-Type` and `Accept` must be `application/json`
 
 Successful response
-```
+```JSON
 {
     "data": {
         "id": null,
