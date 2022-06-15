@@ -3,7 +3,7 @@ class Api::V1::RoadTripSerializer
   def self.response(roadtrip)
     {
   "data": {
-    "id": "null",
+    "id": nil,
     "type": "roadtrip",
     "attributes": {
       "start_city": roadtrip.start_city,

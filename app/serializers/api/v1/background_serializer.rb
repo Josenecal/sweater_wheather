@@ -4,7 +4,7 @@ class Api::V1::BackgroundSerializer
     {
   "data": {
     "type": "image",
-    "id": "null",
+    "id": nil,
     "attributes": {
       "image": {
         "location": location,
