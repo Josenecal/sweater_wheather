@@ -3,7 +3,7 @@ class RoadTripController < ApplicationController
   before_action :check_headers, :check_api_key
 
   def create
-    RoadTripFacade.get_roadtrip(roadtrip_params)
+    trip = RoadTripFacade.get_roadtrip(roadtrip_params)
   end
 
   private

@@ -10,6 +10,7 @@ class ApplicationController < ActionController::API
     key = JSON.parse(request.body.read, symbolize_names: true)[:api_key]
     unless User.exists? api_key: key
       render json: { "error": "unauthorized" }, status: 401
+    end
   end
 
 end
