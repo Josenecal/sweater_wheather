@@ -24,6 +24,9 @@ class RoadTripFacade
     # if duration is less than 48 hours, uses hourly orecast
     # elsif duration is less than 7 days, uses daily forecast
     # elsif somehow duration is more than 7 days... uses last dayof forecast.
+    # Refactor - put this into the RoadTrip object
+    # Refactor - SRP, break into two methods to determine which block to look in, and another to determine the right index and pull information.
+    # Refactor - dry this up, too? 
     if duration == "impossible"
       return Hash.new
     elsif duration <= 172800
