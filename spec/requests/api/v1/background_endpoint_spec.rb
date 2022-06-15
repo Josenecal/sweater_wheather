@@ -41,7 +41,7 @@ RSpec.describe 'background endpoint' do
     expect(response_body[:data].keys).to eq [:type, :id, :attributes]
     expect(response_body[:data].keys.length).to eq 3
     expect(response_body[:data][:type]).to eq "image"
-    expect(response_body[:data][:id]).to eq "null"
+    expect(response_body[:data][:id]).to eq nil
     expect(response_body[:data][:attributes].class).to eq Hash
     expect(response_body[:data][:attributes].keys).to eq [:image]
     expect(response_body[:data][:attributes][:image].keys).to eq [:location, :image_url, :credit]
