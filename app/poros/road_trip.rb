@@ -11,12 +11,12 @@ class RoadTrip
 
   def pretty_travel_time
     if @travel_time == "impossible"
-     return "impossible"
-   else
-     hours = @travel_time.to_i / 3600
-     minutes = (@travel_time.to_i % 3600) / 60
-     return "#{hours} hours, #{minutes} minutes"
-   end
+      return "impossible"
+    else
+      hours = @travel_time.to_i / 3600
+      minutes = (@travel_time.to_i % 3600) / 60
+      return "#{hours} hours, #{minutes} minutes"
+    end
  end
 
 end
