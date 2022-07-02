@@ -12,7 +12,7 @@ jobs:
       - image: cimg/ruby:2.7.4 # use a tailored CircleCI docker image.
         auth:
           username: Josenecal
-          password: ENV['dockerhub_password']  # context / project UI env-var reference
+          password: $dockerhub_password  # context / project UI env-var reference
     steps:
       - checkout # pull down our git code.
       - ruby/install-deps # use the ruby orb to install dependencies
@@ -32,7 +32,7 @@ jobs:
       - image: cimg/ruby:2.7.4 # this is our primary docker image, where step commands run.
         auth:
           username: Josenecal
-          password: ENV['dockerhub_password']  # context / project UI env-var reference
+          password: $dockerhub_password  # context / project UI env-var reference
       - image: cimg/postgres:14.0
         auth:
           username: Josenecal
