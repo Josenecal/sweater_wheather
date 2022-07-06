@@ -22,7 +22,7 @@ jobs:
           POSTGRES_DB: sweater_whether_test
     env:
       RAILS_ENV: test
-      DATABASE_URL: "postgres://sweater_wheather:password@localhost:5432/sweater_whether_test"
+      DATABASE_URL: "postgres://sweater_whether:password@localhost:5432/sweater_whether_test"
       POSTGRES_USER: sweater_whether
       POSTGRES_PASSWORD: ENV['SWEATER_WHETHER_DATABASE_PASSWORD']
     steps:
