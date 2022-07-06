@@ -58,7 +58,7 @@ development:
 test:
   <<: *default
   database: sweater_whether_test
-  username: sweater_wheather
+  username: sweater_whether
   password: ENV['SWEATER_WHETHER_DATABASE_PASSWORD']
 
 # As with config/secrets.yml, you never want to store sensitive information,
